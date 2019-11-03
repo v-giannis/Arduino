@@ -57,7 +57,7 @@ void handlePlain() {
 void handleForm() {
   if (server.method() != HTTP_POST) {
     digitalWrite(led, 1);
-    server.send(405, "text/plain", "Method Not Allowed");
+    server.send(405, "text/html", "Method Not Allowed");
     digitalWrite(led, 0);
   } else {
     digitalWrite(led, 1);
@@ -65,7 +65,7 @@ void handleForm() {
     for (uint8_t i = 0; i < server.args(); i++) {
       message += " " + server.argName(i) + ": " + server.arg(i) + "\n";
     }
-    server.send(200, "text/plain", message);
+    server.send(200, "text/html", message);
     digitalWrite(led, 0);
   }
 }
